@@ -16,7 +16,7 @@ void main(){
   // home:Login()
   // home:Login()
   // home:MoviceScroll()
-  // home:MainApp()
+  home:MainApp()
   ));
 }
 
