@@ -1,27 +1,34 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import '../components/Loading/loading_screen_utils.dart';
 var dio;
 class HttpUtil {
   // 工厂模式
   static HttpUtil get instance => _getInstance();
-
+  
   static HttpUtil _httpUtil;
+  
+  static BuildContext context;
 
   static HttpUtil _getInstance() {
     if (_httpUtil == null) {
-      _httpUtil = HttpUtil();
+      _httpUtil = HttpUtil(context);
     }
     return _httpUtil;
   }
 
-  HttpUtil() {
+  HttpUtil(context) {
     BaseOptions options = BaseOptions(
       connectTimeout: 5000,
       receiveTimeout: 5000,
     );
     dio = new Dio(options);
+    LoadingPage loadingPage = LoadingPage(context);
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+      
       print("========================请求数据===================");
+      loadingPage.show();
       print("url=${options.uri.toString()}");
       print("params=${options.data}");
       dio.lock();
@@ -31,10 +38,12 @@ class HttpUtil {
       dio.unlock();
       return options;
     }, onResponse: (Response response) {
+       loadingPage.close();
       print("========================请求数据===================");
       print("code=${response.statusCode}");
       print("response=${response.data}");
     }, onError: (DioError error) {
+       loadingPage.close();
       print("========================请求错误===================");
       print("message =${error.message}");
     }));

@@ -26,6 +26,8 @@ dependencies:
   fluro: "^1.5.1"
   provider: ^3.0.0+1
   json_annotation: ^2.3.0
+  flutter_spinkit: ^4.0.0
+  toast: ^0.1.5
 
   
 dev_dependencies:
