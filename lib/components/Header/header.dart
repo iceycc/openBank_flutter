@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
-  Header({this.title});
-  final title;
+  Header({Key key,@required this.title}):super(key:key);
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(

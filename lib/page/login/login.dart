@@ -14,7 +14,10 @@ class _LoginState extends State<Login> {
         title: Header(title: '安全登录'),
       ),
       body: Column(
-        children: <Widget>[BicaiTitle(), LoginInput()],
+        children: <Widget>[
+          BicaiTitle(),
+           _LoginInput()
+           ],
       ),
     );
   }
@@ -47,44 +50,25 @@ class BicaiTitle extends StatelessWidget {
   }
 }
 
-class LoginInput extends StatefulWidget {
+class _LoginInput extends StatefulWidget {
   @override
   _LoginInputState createState() => _LoginInputState();
 }
 
-class _LoginInputState extends State<LoginInput> {
+class _LoginInputState extends State<_LoginInput> {
   // final TextEditingController _controller = new TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(30),
         child: Column(
           children: <Widget>[
-            Container(
-                child: TextField(
-              keyboardType: TextInputType.phone,
-              maxLength: 11,
-              maxLengthEnforced: false,
-              obscureText: false,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'phone',
-              ),
-            )),
-            Container(
-                margin: EdgeInsets.only(top: 30),
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
-                )),
+            InputBox(maxLength: 11,labelText:'手机号'),
+            InputBox(maxLength: 6,labelText:'验证码'),
             FlatButton(
               color: Colors.blue,
-              highlightColor: Colors.blue[700],
+              // highlightColor: Color.,
               colorBrightness: Brightness.dark,
               splashColor: Colors.grey,
               child: Text("登录"),
@@ -94,5 +78,25 @@ class _LoginInputState extends State<LoginInput> {
             )
           ],
         ));
+  }
+}
+
+class InputBox extends StatelessWidget {
+  InputBox({Key key,@required this.maxLength,@required this.labelText}):super(key:key);
+  final int maxLength; 
+  final String labelText;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+                child: TextField(
+              keyboardType: TextInputType.phone,
+              maxLength:maxLength, // '$maxLength' as int
+              maxLengthEnforced: false,
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '$labelText',
+              ),
+            ));
   }
 }
