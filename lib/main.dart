@@ -5,6 +5,7 @@ import 'widget/myImage.dart';
 import 'widget/myContainer.dart';
 import 'page/login/login.dart';
 import 'package:openbank/routers/routers.dart';
+import './page/Initialization_welcome/initialization_welcome_screen.dart';
 
 import 'test-pages/movieScroll/movieScroll.dart';
 import 'test-pages/lakes/lakes.dart';
@@ -21,7 +22,6 @@ void main(){
   home:MainApp()
   ));
 }
-
 
 class Application {
   static Router router;
@@ -41,7 +41,6 @@ class MainApp extends StatelessWidget {
       onGenerateRoute: Application.router.generator,
       theme: ThemeData(
         primaryColor: Colors.deepOrangeAccent,
-
       ),
     );
   }

@@ -13,8 +13,7 @@ class Routers {
   
 
   static void configureRoutes(Router router) {
-    router.notFoundHandler = Handler(handlerFunc:
-        (BuildContext context, Map<String, List<String>> parameters) {
+    router.notFoundHandler = Handler(handlerFunc:(BuildContext context, Map<String, List<String>> parameters) {
       print("handler not find");
     });
     router.define(root, handler: loginHandle);

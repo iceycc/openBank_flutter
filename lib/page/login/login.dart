@@ -10,9 +10,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Header(title: '安全登录'),
-      ),
       body: Column(
         children: <Widget>[BicaiTitle(), _LoginInput()],
       ),

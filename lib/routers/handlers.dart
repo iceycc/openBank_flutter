@@ -9,8 +9,8 @@ import '../page/login/login.dart';
 */
 import '../test-pages/movieScroll/movieScroll.dart';
 import '../test-pages//movieDetail/movieDetail.dart';
-import '../test-pages/increase/myHomePage.dart';
-import '../test-pages/lakes/lakes.dart';
+// import '../test-pages/increase/myHomePage.dart';
+// import '../test-pages/lakes/lakes.dart';
 
 
 var loginHandle = Handler(

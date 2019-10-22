@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:openbank/components/Header/header.dart';
+// import 'package:openbank/components/Header/header.dart';
 
 class MovieDetail extends StatelessWidget {
   MovieDetail({Key key,this.title,this.imgUrl}):super(key:key);
