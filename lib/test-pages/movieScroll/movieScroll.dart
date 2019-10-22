@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:openbank/components/Header/header.dart';
-// import 'package:openbank/page/movieDetail/movieDetail.dart';
+import 'package:openbank/test-pages/movieDetail/movieDetail.dart';
 class MoviceScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
