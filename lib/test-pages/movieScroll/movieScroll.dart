@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:openbank/components/Header/header.dart';
-import 'package:openbank/page/movieDetail/movieDetail.dart';
+// import 'package:openbank/page/movieDetail/movieDetail.dart';
 class MoviceScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _imgBox extends StatelessWidget {
   final String title;
   onTapFn(context){
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-      return MovieDetail();
+      // return MovieDetail();
     }));
   }
   @override
@@ -77,7 +77,7 @@ class _imgBox extends StatelessWidget {
       onTap:(){
          print(context);
            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-      return MovieDetail(title: title,imgUrl: imgUrl,);
+      // return MovieDetail(title: title,imgUrl: imgUrl,);
     }));
       },
       child: Container(
