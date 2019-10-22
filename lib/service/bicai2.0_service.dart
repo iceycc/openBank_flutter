@@ -8,7 +8,7 @@ typedef OnSuccessList<T>(List<T> banners);
 typedef OnSuccess<T>(T banners);
 typedef OnFail(String message);
 
-initParams(String type,Object params){
+Object initParams(String type,Object params){
   Object params = {
           "head": {
                         "TYPE": type,
@@ -27,15 +27,14 @@ initParams(String type,Object params){
                     },
   };
   var str = JsonEncoder(params);
-  return 'param_key=' + (str as String);
+  print(params);
+  return params;
   }
 
 class BiCaiApi{
   Future getProdList(data) async {
     try {
-      var params = initParams("GET_PRD_INFO",data);
-      print(params);
-      var response = await HttpUtil.instance.post(Api.BICAI_API,parameters:params);
+      var response = await HttpUtil.instance.post(Api.BICAI_API,parameters:initParams("GET_PRD_INFO",data));
       print(response);
     } catch (e) {
       print(e);

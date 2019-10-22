@@ -55,8 +55,11 @@ class _LoginInput extends StatefulWidget {
 class _LoginInputState extends State<_LoginInput> {
   // final TextEditingController _controller = new TextEditingController();
   _loginFn() {
-    // print('登录');
-    // BiCaiApi().getProdList();
+    print('登录');
+    Object data = {
+      "id":"12345"
+    };
+    BiCaiApi().getProdList(new Map<dynamic, dynamic>.from(data));
   }
 
   @override
