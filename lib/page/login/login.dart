@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:openbank/components/Header/header.dart';
-
+import '../../service/bicai2.0_service.dart';
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -14,10 +14,7 @@ class _LoginState extends State<Login> {
         title: Header(title: '安全登录'),
       ),
       body: Column(
-        children: <Widget>[
-          BicaiTitle(),
-           _LoginInput()
-           ],
+        children: <Widget>[BicaiTitle(), _LoginInput()],
       ),
     );
   }
@@ -57,15 +54,19 @@ class _LoginInput extends StatefulWidget {
 
 class _LoginInputState extends State<_LoginInput> {
   // final TextEditingController _controller = new TextEditingController();
-  
+  _loginFn() {
+    // print('登录');
+    // BiCaiApi().getProdList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(30),
         child: Column(
           children: <Widget>[
-            InputBox(maxLength: 11,labelText:'手机号'),
-            InputBox(maxLength: 6,labelText:'验证码'),
+            InputBox(maxLength: 11, labelText: '手机号'),
+            InputBox(maxLength: 6, labelText: '验证码'),
             FlatButton(
               color: Colors.blue,
               // highlightColor: Color.,
@@ -74,7 +75,7 @@ class _LoginInputState extends State<_LoginInput> {
               child: Text("登录"),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(3.0)),
-              onPressed: () {},
+              onPressed: _loginFn,
             )
           ],
         ));
@@ -82,21 +83,30 @@ class _LoginInputState extends State<_LoginInput> {
 }
 
 class InputBox extends StatelessWidget {
-  InputBox({Key key,@required this.maxLength,@required this.labelText}):super(key:key);
-  final int maxLength; 
+  InputBox({Key key, @required this.maxLength, @required this.labelText})
+      : super(key: key);
+  final int maxLength;
   final String labelText;
   @override
   Widget build(BuildContext context) {
     return Container(
-                child: TextField(
-              keyboardType: TextInputType.phone,
-              maxLength:maxLength, // '$maxLength' as int
-              maxLengthEnforced: false,
-              obscureText: false,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: '$labelText',
-              ),
-            ));
+        child: TextField(
+      onChanged: (String str) {
+        //输入监听
+        print('用户输入变更');
+      },
+      onSubmitted: (String str) {
+        //提交监听
+        print('用户提交变更');
+      },
+      keyboardType: TextInputType.phone,
+      maxLength: maxLength, // '$maxLength' as int
+      maxLengthEnforced: true,
+      obscureText: false,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: '$labelText',
+      ),
+    ));
   }
 }

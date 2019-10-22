@@ -3,11 +3,13 @@ import 'package:fluro/fluro.dart';
 import 'widget/myText.dart';
 import 'widget/myImage.dart';
 import 'widget/myContainer.dart';
-import 'page/increase/myHomePage.dart';
-import 'page/lakes/lakes.dart';
 import 'page/login/login.dart';
-import 'page/movieScroll/movieScroll.dart';
 import 'package:openbank/routers/routers.dart';
+
+import 'test-pages/movieScroll/movieScroll.dart';
+import 'test-pages/lakes/lakes.dart';
+import 'test-pages/increase/myHomePage.dart';
+
 
 void main(){
   
