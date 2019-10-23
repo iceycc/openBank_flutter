@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:openbank/components/Header/header.dart';
+// import 'package:openbank/components/Header/header.dart';
 import '../../service/bicai2.0_service.dart';
 class Login extends StatefulWidget {
   @override
@@ -53,10 +53,11 @@ class _LoginInputState extends State<_LoginInput> {
   // final TextEditingController _controller = new TextEditingController();
   _loginFn() {
     print('登录');
-    Object data = {
-      "id":"12345"
+    final data = {
+      "PHONE_NUM":"12345",
+      "SAFT_CODE":""
     };
-    BiCaiApi().getProdList(new Map<dynamic, dynamic>.from(data));
+    BiCaiApi().doLogin(data);
   }
 
   @override

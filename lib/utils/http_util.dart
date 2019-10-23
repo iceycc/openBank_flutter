@@ -1,52 +1,50 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import '../components/Loading/loading_screen_utils.dart';
+// import 'package:mall/constant/string.dart';
+// import 'package:mall/utils/shared_preferences_util.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
 var dio;
+
 class HttpUtil {
   // 工厂模式
   static HttpUtil get instance => _getInstance();
-  
+
   static HttpUtil _httpUtil;
-  
-  static BuildContext context;
 
   static HttpUtil _getInstance() {
     if (_httpUtil == null) {
-      _httpUtil = HttpUtil(context);
+      _httpUtil = HttpUtil();
     }
     return _httpUtil;
   }
 
-  HttpUtil(context) {
+  HttpUtil() {
     BaseOptions options = BaseOptions(
       connectTimeout: 5000,
       receiveTimeout: 5000,
+      // contentType:"application/x-www-form-urlencoded"
+      // headers: {"content-type": "application/x-www-form-urlencoded"}
     );
     dio = new Dio(options);
-    LoadingPage loadingPage = LoadingPage(context);
-    dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
-      
-      print("========================请求数据===================");
-      loadingPage.show();
-      print("url=${options.uri.toString()}");
-      print("params=${options.data}");
-      dio.lock();
-    //  await SharedPreferencesUtils.getToken().then((token) {
-    //     options.headers[Strings.TOKEN] = token;
-    //   });
-      dio.unlock();
-      return options;
-    }, onResponse: (Response response) {
-       loadingPage.close();
-      print("========================请求数据===================");
-      print("code=${response.statusCode}");
-      print("response=${response.data}");
-    }, onError: (DioError error) {
-       loadingPage.close();
-      print("========================请求错误===================");
-      print("message =${error.message}");
-    }));
+    // dio.interceptors
+    //     .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+    //   print("========================请求数据===================");
+    //   print("url=${options.uri.toString()}");
+    //   print("params=${options.data}");
+    //   dio.lock();
+    // //  await SharedPreferencesUtils.getToken().then((token) {
+    // //     options.headers[Strings.TOKEN] = token;
+    // //   });
+    //   dio.unlock();
+    //   return options;
+    // }, onResponse: (Response response) {
+    //   print("========================请求数据===================");
+    //   print("code=${response.statusCode}");
+    //   print("response=${response.data}");
+    // }, onError: (DioError error) {
+    //   print("========================请求错误===================");
+    //   print("message =${error.message}");
+    // }));
   }
 
   Future get(String url,
@@ -66,8 +64,11 @@ class HttpUtil {
   }
 
   Future post(String url,
-      {Map<String, dynamic> parameters, Options options}) async {
+      {String parameters, Options options}) async {
     Response response;
+     print("url=$url");
+     print("parameters=$parameters");
+
     if (parameters != null && options != null) {
       response = await dio.post(url, data: parameters, options: options);
     } else if (parameters != null && options == null) {
